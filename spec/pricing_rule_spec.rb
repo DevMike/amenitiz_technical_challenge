@@ -2,7 +2,7 @@ require_relative '../app/pricing_rule'
 
 RSpec.describe 'Pricing Rules' do
   describe BuyOneGetOneFreeRule do
-    let(:rule) { BuyOneGetOneFreeRule.new }
+    let(:rule) { described_class.new }
 
     describe '#apply' do
       subject { rule.apply(quantity, price) }
@@ -38,7 +38,7 @@ RSpec.describe 'Pricing Rules' do
   describe BulkDiscountRule do
     subject { rule.apply(quantity, price) }
 
-    let(:rule) { BulkDiscountRule.new(threshold:, discounted_price:) }
+    let(:rule) { described_class.new(threshold:, discounted_price:) }
     let(:threshold) { 3 }
     let(:discounted_price) { 4.5 }
 
@@ -47,7 +47,7 @@ RSpec.describe 'Pricing Rules' do
       let(:price) { 5 }
 
       it 'applies full price' do
-        is_expected.to eq(10)
+        expect(subject).to eq(10)
       end
     end
 
@@ -56,7 +56,7 @@ RSpec.describe 'Pricing Rules' do
       let(:price) { 5 }
 
       it 'applies the discount' do
-        is_expected.to eq(13.5)
+        expect(subject).to eq(13.5)
       end
     end
   end
@@ -64,7 +64,7 @@ RSpec.describe 'Pricing Rules' do
   describe VolumeDiscountRule do
     subject { rule.apply(quantity, price) }
 
-    let(:rule) { VolumeDiscountRule.new(threshold:, factor: ) }
+    let(:rule) { described_class.new(threshold:, factor:) }
     let(:threshold) { 3 }
     let(:factor) { 2.0 / 3.0 }
 
@@ -73,7 +73,7 @@ RSpec.describe 'Pricing Rules' do
       let(:price) { 11.23 }
 
       it 'applies full price' do
-        is_expected.to eq(22.46)
+        expect(subject).to eq(22.46)
       end
     end
 
@@ -82,7 +82,7 @@ RSpec.describe 'Pricing Rules' do
       let(:price) { 11.23 }
 
       it 'applies the discount' do
-        is_expected.to eq(22.46)
+        expect(subject).to eq(22.46)
       end
     end
   end

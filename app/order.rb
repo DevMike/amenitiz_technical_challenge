@@ -6,8 +6,9 @@ class Order
   end
 
   def scan(code)
-    product = PRODUCTS.detect {|product| product.code == code }
+    product = PRODUCTS.detect { |product| product.code == code }
     raise "Unknown product code: #{code}" unless product
+
     @basket << product
   end
 

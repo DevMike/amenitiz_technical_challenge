@@ -1,7 +1,7 @@
 require_relative '../app/order'
 
 RSpec.describe Order do
-  let(:order) { Order.new }
+  let(:order) { described_class.new }
 
   describe '#total_price' do
     subject { order.total }
@@ -9,7 +9,7 @@ RSpec.describe Order do
     shared_examples_for 'calculates total price' do |product_codes, expected_total_price|
       it do
         product_codes.each { |code| order.scan(code) }
-        is_expected.to eq(expected_total_price)
+        expect(subject).to eq(expected_total_price)
       end
     end
 
@@ -24,13 +24,13 @@ RSpec.describe Order do
     context 'with valid code' do
       let(:code) { 'GR1' }
 
-      it { expect { subject }.not_to raise_error("Unknown product code: GR1") }
+      it { expect { subject }.not_to raise_error('Unknown product code: GR1') }
     end
 
     context 'with invalid code' do
       let(:code) { 'XYZ' }
 
-      it { expect { subject }.to raise_error("Unknown product code: XYZ") }
+      it { expect { subject }.to raise_error('Unknown product code: XYZ') }
     end
   end
 end

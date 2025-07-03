@@ -85,6 +85,24 @@ Run a single test file:
 bundle exec rspec spec/buy_one_get_one_free_rule_spec.rb
 ```
 
+## 🔍 Code Quality and Security
+
+### Run RuboCop
+
+```bash
+bundle exec rubocop
+```
+to auto correct
+```bash
+bundle exec rubocop -A
+```
+
+Run Bundle Audit to ensure your gems don't have any known vulnerabilities
+```bash
+bundle exec bundle-audit update
+bundle exec bundle-audit
+```
+
 ---
 
 ## 🛒 Using the CLI
