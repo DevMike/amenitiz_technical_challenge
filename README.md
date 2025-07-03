@@ -1,6 +1,6 @@
 # 🧾 Amenitiz Technical Challenge – Checkout System
 
-A flexible and test-driven Ruby checkout system developed for the Amenitiz backend technical challenge.
+A flexible and test-driven Ruby checkout system developed for the Amenitiz backend technical challenge described there https://github.com/amenitiz/be-technical-challenge.
 
 The application allows scanning products, applying promotional rules, and computing the final total. The system is modular and built for extensibility — adding new pricing rules or products is straightforward.
 
