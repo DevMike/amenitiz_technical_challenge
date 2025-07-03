@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+require_relative '../app/order'
+
+order = Order.new
+
+puts "Welcome to Amenitiz Checkout"
+puts "Available products: GR1, SR1, CF1"
+puts "Type product codes one by one. Type 'done' to calculate total."
+
+loop do
+  print "> "
+  input = gets.strip.upcase
+  break if input == "DONE"
+  begin
+    order.scan(input)
+  rescue => e
+    puts e.message
+  end
+end
+
+puts "Total: €#{order.total}"
